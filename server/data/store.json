@@ -1353,6 +1353,62 @@
   ],
   "notifications": [
     {
+      "id": "NOTIF-IMP-1792845695783-523",
+      "recipientId": "OFF-003",
+      "recipientRole": "official",
+      "type": "IMPACT_ALERT",
+      "severity": "critical",
+      "title": "Impact Advisory: CB-2026-103 updated → CB-2026-105 review suggested",
+      "message": "Case CB-2026-103 (Apex Institute of Technology & Management) was updated with ESCALATED [Status: Escalated]. Case CB-2026-105 (Assigned to: Smt. Preeti Deshmukh) may require coordination review because: Both cases belong to Apex Institute of Technology & Management and share high-risk administrative nexus.. (Recommendation for official review; not an automated legal finding).",
+      "relatedCaseId": "CB-2026-105",
+      "relatedInstitutionId": "INST-001",
+      "acknowledged": false,
+      "read": false,
+      "createdAt": "2026-10-24T12:41:35.783Z"
+    },
+    {
+      "id": "NOTIF-IMP-1792845695781-605",
+      "recipientId": "OFF-001",
+      "recipientRole": "official",
+      "type": "IMPACT_ALERT",
+      "severity": "critical",
+      "title": "Impact Advisory: CB-2026-103 updated → CB-2026-102 review suggested",
+      "message": "Case CB-2026-103 (Apex Institute of Technology & Management) was updated with ESCALATED [Status: Escalated]. Case CB-2026-102 (Assigned to: Dr. Ananya Sen) may require coordination review because: Both cases belong to Apex Institute of Technology & Management and share high-risk administrative nexus.. (Recommendation for official review; not an automated legal finding).",
+      "relatedCaseId": "CB-2026-102",
+      "relatedInstitutionId": "INST-001",
+      "acknowledged": false,
+      "read": false,
+      "createdAt": "2026-10-24T12:41:35.781Z"
+    },
+    {
+      "id": "NOTIF-IMP-1792845695779-148",
+      "recipientId": "OFF-002",
+      "recipientRole": "official",
+      "type": "IMPACT_ALERT",
+      "severity": "critical",
+      "title": "Impact Advisory: CB-2026-103 updated → CB-2026-104 review suggested",
+      "message": "Case CB-2026-103 (Apex Institute of Technology & Management) was updated with ESCALATED [Status: Escalated]. Case CB-2026-104 (Assigned to: Shri Vikramaditya Rao) may require coordination review because: Both cases belong to Apex Institute of Technology & Management and share high-risk administrative nexus.. (Recommendation for official review; not an automated legal finding).",
+      "relatedCaseId": "CB-2026-104",
+      "relatedInstitutionId": "INST-001",
+      "acknowledged": false,
+      "read": false,
+      "createdAt": "2026-10-24T12:41:35.779Z"
+    },
+    {
+      "id": "NOTIF-IMP-1792845695778-345",
+      "recipientId": "OFF-001",
+      "recipientRole": "official",
+      "type": "IMPACT_ALERT",
+      "severity": "critical",
+      "title": "Impact Advisory: CB-2026-103 updated → CB-2026-101 review suggested",
+      "message": "Case CB-2026-103 (Apex Institute of Technology & Management) was updated with ESCALATED [Status: Escalated]. Case CB-2026-101 (Assigned to: Dr. Ananya Sen) may require coordination review because: Regulatory review of ghost faculty (CB-103) is directly linked to faculty turnover and unpaid salaries (CB-101) at Apex Institute.. (Recommendation for official review; not an automated legal finding).",
+      "relatedCaseId": "CB-2026-101",
+      "relatedInstitutionId": "INST-001",
+      "acknowledged": false,
+      "read": false,
+      "createdAt": "2026-10-24T12:41:35.778Z"
+    },
+    {
       "id": "NOTIF-IMP-1792842332863-305",
       "recipientId": "OFF-003",
       "recipientRole": "official",
@@ -1556,6 +1612,22 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "AUD-1792845695786-8",
+      "userId": "USR-001",
+      "userName": "Dr. Rajeshwar Sharma",
+      "userRole": "admin",
+      "action": "VALIDATION_TEST_1792845695785",
+      "entityType": "Case",
+      "entityId": "TEST-CB-001",
+      "details": "Automated test suite verification audit entry.",
+      "previousValue": null,
+      "newValue": {
+        "verified": true
+      },
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-24T12:41:35.786Z"
+    },
     {
       "id": "AUD-1792842332866-986",
       "userId": "USR-001",
