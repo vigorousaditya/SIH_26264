@@ -15,6 +15,7 @@ lerna-debug.log*
 *.env.backup
 
 # Client build output (re-generated during deployment build step)
+dist/
 client/dist/
 
 # Logs and system tasks

@@ -12,7 +12,7 @@
     "server": "node server/index.js",
     "client": "npm run dev --workspace=client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm run build --workspace=client",
+    "build": "npm run build --workspace=client && node -e \"const fs=require('fs'); if(fs.existsSync('dist') && !fs.existsSync('client/dist')) fs.cpSync('dist', 'client/dist', {recursive:true}); else if(fs.existsSync('client/dist') && !fs.existsSync('dist')) fs.cpSync('client/dist', 'dist', {recursive:true});\"",
     "install:all": "npm install",
     "test": "node server/test/test-flows.js",
     "test:http": "node server/test/test-http.js",

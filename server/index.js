@@ -78,7 +78,12 @@ app.get('/api/health', (req, res) => {
 });
 
 // Serve frontend static build if available
-const clientDistPath = path.join(__dirname, '..', 'client', 'dist');
+const candidateDistPaths = [
+  path.join(__dirname, '..', 'dist'),
+  path.join(__dirname, '..', 'client', 'dist')
+];
+const clientDistPath = candidateDistPaths.find(p => fs.existsSync(p)) || candidateDistPaths[0];
+
 if (fs.existsSync(clientDistPath)) {
   console.log(`[Server] Serving production client build from ${clientDistPath}`);
   
