@@ -80,7 +80,9 @@ app.get('/api/health', (req, res) => {
 // Serve frontend static build if available
 const candidateDistPaths = [
   path.join(__dirname, '..', 'dist'),
-  path.join(__dirname, '..', 'client', 'dist')
+  path.join(__dirname, '..', 'client', 'dist'),
+  path.join(__dirname, 'dist'),
+  path.join(__dirname, 'client', 'dist')
 ];
 const clientDistPath = candidateDistPaths.find(p => fs.existsSync(p)) || candidateDistPaths[0];
 
@@ -112,13 +114,14 @@ let server;
 // Connect to DB and Start Server
 async function startServer() {
   await ensureDb();
-  server = app.listen(PORT, () => {
+  server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`====================================================`);
-    console.log(`🚀 CaseBridge Backend running on http://localhost:${PORT}`);
+    console.log(`🚀 CaseBridge Backend running on http://0.0.0.0:${PORT}`);
     console.log(`🏛️  Storage Mode: ${db.getMode().toUpperCase()}`);
     console.log(`⚡ Connected APIs ready for SIH 2026 Evaluation`);
     console.log(`====================================================`);
   });
+  return server;
 }
 
 // Graceful shutdown handlers for container/cloud environments
@@ -143,10 +146,16 @@ process.on('SIGINT', () => {
   }
 });
 
-// Export app for serverless execution (Vercel)
+// Export app and helper functions
 module.exports = app;
+module.exports.app = app;
+module.exports.startServer = startServer;
 
-// Only start HTTP listener if executed directly
-if (require.main === module) {
-  startServer();
+// Start HTTP server on any standard Node environment (Render, Railway, Docker, Local)
+// Only skip auto-listen in serverless cloud environments (Vercel)
+if (process.env.VERCEL !== '1') {
+  startServer().catch(err => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  });
 }
