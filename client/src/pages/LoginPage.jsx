@@ -78,24 +78,24 @@ export const LoginPage = () => {
   return (
     <div className="min-h-screen bg-gov-bg flex flex-col justify-between font-sans text-gov-text select-none">
       {/* Top Standard Government Header Strip */}
-      <header className="bg-gov-navyDark text-white border-b border-gov-navy px-6 py-3">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 border border-slate-600 bg-white/10 rounded-xs flex flex-col items-center justify-center text-center p-0.5 shrink-0">
-              <span className="text-[9px] font-bold text-amber-300 leading-none">AICTE</span>
-              <span className="text-[7px] text-slate-300 font-mono leading-none mt-0.5">अभातशिप</span>
+      <header className="bg-gov-navyDark text-white border-b border-gov-navy px-4 sm:px-6 py-2.5 sm:py-3">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 border border-slate-600 bg-white/10 rounded-xs flex flex-col items-center justify-center text-center p-0.5 shrink-0">
+              <span className="text-[8px] sm:text-[9px] font-bold text-amber-300 leading-none">AICTE</span>
+              <span className="text-[6px] sm:text-[7px] text-slate-300 font-mono leading-none mt-0.5">अभातशिप</span>
             </div>
-            <div>
-              <div className="text-xxs font-medium text-slate-300 uppercase tracking-wide">
+            <div className="min-w-0">
+              <div className="text-xxs font-medium text-slate-300 uppercase tracking-wide truncate hidden sm:block">
                 अखिल भारतीय तकनीकी शिक्षा परिषद • All India Council for Technical Education
               </div>
-              <div className="text-sm font-bold text-white tracking-normal">
-                CaseBridge — Institution Complaint Monitoring & Coordination System
+              <div className="text-xs sm:text-sm font-bold text-white tracking-normal truncate">
+                CaseBridge — Institution Complaint Monitoring
               </div>
             </div>
           </div>
 
-          <div className="text-right hidden sm:block">
+          <div className="text-right hidden sm:block shrink-0">
             <span className="text-xxs font-mono px-2 py-0.5 rounded-xs bg-gov-navy text-slate-300 border border-slate-700">
               SIH 2026 • Problem Statement: SIH26264
             </span>

@@ -12,7 +12,8 @@ import {
   BarChart3, 
   History,
   ShieldCheck,
-  AlertOctagon
+  AlertOctagon,
+  X
 } from 'lucide-react';
 import { useAlert } from '../../context/AlertContext';
 
@@ -49,19 +50,32 @@ const NAV_SECTIONS = [
   }
 ];
 
-export const Sidebar = () => {
+export const Sidebar = ({ mobileOpen = false, onClose }) => {
   const { unreadCount, unassignedCount } = useAlert();
 
   return (
-    <aside className="w-56 bg-gov-navyDark text-slate-300 flex flex-col shrink-0 border-r border-gov-navy select-none min-h-screen text-xs">
+    <aside className={`fixed inset-y-0 left-0 z-50 w-64 md:w-56 bg-gov-navyDark text-slate-300 flex flex-col shrink-0 border-r border-gov-navy select-none min-h-screen text-xs transition-transform duration-200 ease-in-out md:relative md:translate-x-0 ${
+      mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full md:translate-x-0'
+    }`}>
       {/* Sidebar Top Label */}
-      <div className="px-4 py-3 border-b border-gov-navy border-opacity-50 bg-slate-950/30">
-        <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
-          AICTE Portal Navigation
+      <div className="px-4 py-3 border-b border-gov-navy border-opacity-50 bg-slate-950/30 flex items-center justify-between">
+        <div>
+          <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+            AICTE Portal Navigation
+          </div>
+          <div className="text-xxs text-slate-400 mt-0.5">
+            Grievance Redressal & Inter-Bureau
+          </div>
         </div>
-        <div className="text-xxs text-slate-400 mt-0.5">
-          Grievance Redressal & Inter-Bureau
-        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="md:hidden p-1 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xs transition-colors"
+          title="Close Navigation Drawer"
+          aria-label="Close navigation"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Navigation Groups */}
@@ -76,6 +90,7 @@ export const Sidebar = () => {
                 key={item.path}
                 to={item.path}
                 end={item.path === '/'}
+                onClick={() => onClose && onClose()}
                 className={({ isActive }) =>
                   `flex items-center justify-between px-2.5 py-1.5 rounded-xs font-medium transition-colors ${
                     isActive

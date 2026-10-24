@@ -148,7 +148,7 @@ export const CaseManagementPage = () => {
       {/* Filter and Search Bar (Compact Standard) */}
       <div className="bg-white p-3 border border-gov-border rounded-xs shadow-card space-y-2.5">
         <div className="flex flex-col md:flex-row items-center gap-2.5 justify-between">
-          <form onSubmit={handleSearchSubmit} className="relative flex-1 w-full max-w-md">
+          <form onSubmit={handleSearchSubmit} className="relative flex-1 w-full md:max-w-md">
             <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
@@ -164,7 +164,7 @@ export const CaseManagementPage = () => {
             <select
               value={department}
               onChange={(e) => { setDepartment(e.target.value); setCurrentPage(1); }}
-              className="bg-white border border-gov-border rounded-xs px-2 py-1 font-medium text-xs"
+              className="bg-white border border-gov-border rounded-xs px-2 py-1 font-medium text-xs flex-1 sm:flex-none"
             >
               {DEPARTMENTS.map(d => (
                 <option key={d} value={d}>
@@ -177,7 +177,7 @@ export const CaseManagementPage = () => {
             <select
               value={status}
               onChange={(e) => { setStatus(e.target.value); setCurrentPage(1); }}
-              className="bg-white border border-gov-border rounded-xs px-2 py-1 font-medium text-xs"
+              className="bg-white border border-gov-border rounded-xs px-2 py-1 font-medium text-xs flex-1 sm:flex-none"
             >
               {STATUSES.map(s => (
                 <option key={s} value={s}>
@@ -190,7 +190,7 @@ export const CaseManagementPage = () => {
             <select
               value={priority}
               onChange={(e) => { setPriority(e.target.value); setCurrentPage(1); }}
-              className="bg-white border border-gov-border rounded-xs px-2 py-1 font-medium text-xs"
+              className="bg-white border border-gov-border rounded-xs px-2 py-1 font-medium text-xs flex-1 sm:flex-none"
             >
               {PRIORITIES.map(p => (
                 <option key={p} value={p}>
@@ -212,8 +212,8 @@ export const CaseManagementPage = () => {
         </div>
 
         {/* Quick Checkbox Toggles & Metrics Count */}
-        <div className="flex items-center justify-between pt-2 border-t border-gov-borderLight text-xs">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-gov-borderLight text-xs">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <label className="flex items-center gap-1.5 cursor-pointer font-medium text-gov-text">
               <input
                 type="checkbox"

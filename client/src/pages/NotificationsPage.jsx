@@ -177,7 +177,7 @@ export const NotificationsPage = () => {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-white border border-gov-border rounded-xs p-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="bg-white border border-gov-border rounded-xs p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-semibold text-gov-text flex items-center gap-1">
             <Filter className="w-3.5 h-3.5 text-gov-textMuted" /> Filter Notices:
@@ -304,7 +304,7 @@ export const NotificationsPage = () => {
                   </div>
 
                   {/* Actions Right */}
-                  <div className="flex items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-gov-borderLight justify-end">
+                  <div className="flex flex-wrap items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-gov-borderLight justify-start sm:justify-end">
                     {n.relatedCaseId && (
                       <Button
                         variant="secondary"

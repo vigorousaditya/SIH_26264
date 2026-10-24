@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { AlertProvider } from './context/AlertContext';
@@ -25,6 +25,7 @@ import { UnassignedQueuePage } from './pages/UnassignedQueuePage';
 // Protected App Layout
 const AppLayout = () => {
   const { isAuthenticated, loading } = useAuth();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   if (loading) {
     return (
@@ -42,24 +43,39 @@ const AppLayout = () => {
   }
 
   return (
-    <div className="flex h-screen bg-gov-bg overflow-hidden font-sans text-gov-text text-base">
-      {/* Fixed Left Navigation Sidebar */}
-      <Sidebar />
+    <div className="flex h-screen bg-gov-bg overflow-hidden font-sans text-gov-text text-base relative">
+      {/* Off-canvas mobile backdrop */}
+      {mobileNavOpen && (
+        <div
+          className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-40 md:hidden transition-opacity duration-200"
+          onClick={() => setMobileNavOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Navigation Sidebar (Drawer on mobile, fixed left rail on md+) */}
+      <Sidebar
+        mobileOpen={mobileNavOpen}
+        onClose={() => setMobileNavOpen(false)}
+      />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Top Government Header Strip */}
-        <Navbar />
+        {/* Top Government Header Strip with Mobile Hamburger */}
+        <Navbar
+          mobileNavOpen={mobileNavOpen}
+          onToggleMenu={() => setMobileNavOpen(!mobileNavOpen)}
+        />
 
         {/* Dynamic Page Outlet with Government Padding */}
-        <main className="flex-1 overflow-y-auto p-5 sm:p-6 bg-gov-bg">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 bg-gov-bg">
           <ErrorBoundary>
             <Outlet />
           </ErrorBoundary>
         </main>
 
         {/* Slim Government Standard Footer */}
-        <footer className="h-7 bg-white border-t border-gov-border px-6 flex items-center justify-between text-xxs text-gov-textLight select-none shrink-0 no-print">
+        <footer className="bg-white border-t border-gov-border px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xxs text-gov-textLight select-none shrink-0 py-1.5 sm:py-0 sm:h-7 no-print text-center sm:text-left gap-0.5">
           <div>
             AICTE CaseBridge Portal • Smart India Hackathon 2026 (SIH26264) • Fictional Demo Data
           </div>

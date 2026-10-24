@@ -187,7 +187,7 @@ export const DashboardPage = () => {
         </div>
 
         {/* Unassigned Queue */}
-        <div className={`p-3 border rounded-xs shadow-card ${
+        <div className={`p-3 border rounded-xs shadow-card col-span-2 sm:col-span-1 ${
           summary.unassignedCases > 0 ? 'bg-amber-50/60 border-amber-300' : 'bg-white border-gov-border'
         }`}>
           <div className="text-xxs font-bold text-amber-900 uppercase tracking-wider flex items-center justify-between">
@@ -332,10 +332,10 @@ export const DashboardPage = () => {
                   <div
                     key={c.id}
                     onClick={() => setSelectedCaseId(c.id)}
-                    className="p-2.5 rounded-xs border border-gov-border bg-gov-bg hover:bg-slate-100/80 transition-colors flex items-center justify-between cursor-pointer"
+                    className="p-2.5 rounded-xs border border-gov-border bg-gov-bg hover:bg-slate-100/80 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-2 cursor-pointer"
                   >
                     <div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                         <span className="text-xs font-mono font-bold text-gov-navy">{c.id}</span>
                         <StatusBadge status={c.status} />
                         <span className="text-xxs text-gov-textMuted">Assigned: {c.assignedOfficialName}</span>
@@ -345,7 +345,7 @@ export const DashboardPage = () => {
                       </div>
                     </div>
 
-                    <div className="text-right shrink-0">
+                    <div className="text-left sm:text-right shrink-0">
                       <span className="text-xxs font-mono font-bold px-2 py-0.5 rounded-xs bg-status-pendingBg text-status-pending border border-status-pendingBorder">
                         {diffDays > 0 ? `${diffDays} days left` : 'Overdue'}
                       </span>

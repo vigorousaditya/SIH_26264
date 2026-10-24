@@ -27,12 +27,12 @@ export const PageHeader = ({
   }
 
   return (
-    <div className={`border-b border-gov-border pb-3 mb-4 bg-white -mx-6 -mt-6 px-6 pt-4 shadow-sm ${className}`}>
+    <div className={`border-b border-gov-border pb-3 mb-4 bg-white -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 px-4 sm:px-6 pt-3 sm:pt-4 shadow-sm ${className}`}>
       {activeCrumbs.length > 0 && <Breadcrumb items={activeCrumbs} />}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2.5">
-            <h1 className="text-lg font-bold text-gov-navy tracking-tight leading-snug">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+            <h1 className="text-base sm:text-lg font-bold text-gov-navy tracking-tight leading-snug">
               {title}
             </h1>
             {badgeText && (
@@ -48,7 +48,7 @@ export const PageHeader = ({
           )}
         </div>
         {actions && (
-          <div className="flex items-center gap-2 shrink-0 self-start md:self-center">
+          <div className="flex flex-wrap items-center gap-2 shrink-0 self-start md:self-center">
             {actions}
           </div>
         )}

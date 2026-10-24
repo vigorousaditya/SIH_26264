@@ -236,12 +236,12 @@ export const ImpactMapPage = () => {
 
           <div className="space-y-1.5 max-h-40 overflow-y-auto pr-1">
             {impactAlerts.map(alert => (
-              <div key={alert.id} className="p-2 bg-white border border-red-200 rounded-xs flex items-start justify-between gap-3 text-xs">
+              <div key={alert.id} className="p-2.5 bg-white border border-red-200 rounded-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
                 <div>
                   <div className="font-bold text-gov-text text-xs mb-0.5">{alert.title}</div>
                   <p className="text-xxs text-gov-textMuted leading-relaxed">{alert.message}</p>
                 </div>
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
                   <Button
                     variant="secondary"
                     size="sm"
@@ -264,7 +264,7 @@ export const ImpactMapPage = () => {
       )}
 
       {/* Filters Bar & Legend */}
-      <div className="bg-white p-3 border border-gov-border rounded-xs shadow-card flex flex-wrap items-center gap-3 justify-between text-xs">
+      <div className="bg-white p-3 border border-gov-border rounded-xs shadow-card flex flex-col sm:flex-row sm:items-center gap-3 justify-between text-xs">
         <div className="flex flex-wrap items-center gap-2.5">
           <label htmlFor="filter-inst" className="text-gov-textMuted font-semibold flex items-center gap-1">
             <Filter className="w-3.5 h-3.5 text-slate-400" /> Filter:
@@ -308,7 +308,7 @@ export const ImpactMapPage = () => {
         </div>
 
         {/* Clean Muted Legend */}
-        <div className="flex items-center gap-3 text-xxs text-gov-textLight font-medium">
+        <div className="flex flex-wrap items-center gap-3 text-xxs text-gov-textLight font-medium pt-2 sm:pt-0 border-t sm:border-t-0 border-gov-borderLight">
           <span className="flex items-center gap-1">
             <span className="w-2.5 h-2.5 bg-[#D97706] rounded-none shrink-0" /> Pending
           </span>
@@ -327,7 +327,7 @@ export const ImpactMapPage = () => {
       {/* Main Graph & Side Inspection Panel Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Visual Graph View (React Flow) */}
-        <div className="lg:col-span-3 bg-slate-900 border border-gov-border rounded-xs shadow-card h-[520px] relative overflow-hidden">
+        <div className="lg:col-span-3 bg-slate-900 border border-gov-border rounded-xs shadow-card h-[360px] sm:h-[520px] relative overflow-hidden">
           {loading ? (
             <div className="h-full flex items-center justify-center text-slate-400 text-xs">
               Calculating node layout and dependency matrix...

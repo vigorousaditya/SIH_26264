@@ -241,7 +241,7 @@ export const SimilarGroupingPage = () => {
                 </div>
 
                 {/* Side-by-Side Comparison of Complaints */}
-                <div className="grid grid-cols-2 gap-2 p-2 bg-gov-bg border border-gov-borderLight rounded-xs text-xxs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-gov-bg border border-gov-borderLight rounded-xs text-xxs">
                   {/* Case 1 */}
                   <div 
                     onClick={() => setSelectedCaseId(sugg.primaryCase.id)}
@@ -292,8 +292,8 @@ export const SimilarGroupingPage = () => {
                 </p>
 
                 {/* Lead Official Selector & Action Row */}
-                <div className="pt-2 border-t border-gov-border flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5">
+                <div className="pt-2 border-t border-gov-border flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                  <div className="flex items-center gap-1.5 flex-wrap">
                     <label htmlFor={`lead-officer-${idx}`} className="text-xxs font-semibold text-gov-textMuted">Lead Officer:</label>
                     <select
                       id={`lead-officer-${idx}`}
@@ -308,7 +308,7 @@ export const SimilarGroupingPage = () => {
                     </select>
                   </div>
 
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 justify-end">
                     <Button
                       variant="secondary"
                       size="sm"
