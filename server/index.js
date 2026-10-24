@@ -34,10 +34,23 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '10mb' }));
 
-// Attach database mode header for transparency
-app.use((req, res, next) => {
-  res.setHeader('X-CaseBridge-Storage-Mode', db.getMode());
-  next();
+// Lazy DB initialization for Serverless (Vercel) & traditional servers
+let dbInitPromise = null;
+function ensureDb() {
+  if (!dbInitPromise) {
+    dbInitPromise = connectDB();
+  }
+  return dbInitPromise;
+}
+
+app.use(async (req, res, next) => {
+  try {
+    await ensureDb();
+    res.setHeader('X-CaseBridge-Storage-Mode', db.getMode());
+    next();
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Mount Routes
@@ -93,7 +106,7 @@ let server;
 
 // Connect to DB and Start Server
 async function startServer() {
-  await connectDB();
+  await ensureDb();
   server = app.listen(PORT, () => {
     console.log(`====================================================`);
     console.log(`🚀 CaseBridge Backend running on http://localhost:${PORT}`);
@@ -125,4 +138,10 @@ process.on('SIGINT', () => {
   }
 });
 
-startServer();
+// Export app for serverless execution (Vercel)
+module.exports = app;
+
+// Only start HTTP listener if executed directly
+if (require.main === module) {
+  startServer();
+}

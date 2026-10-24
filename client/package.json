@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@xyflow/react": "^12.3.6",
-    "casebridge-root": "file:..",
     "clsx": "^2.1.1",
     "lucide-react": "^0.395.0",
     "react": "^18.3.1",
