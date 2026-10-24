@@ -1,4 +1,8 @@
-const API_BASE = '/api';
+// Dynamic API Base URL resolution:
+// Supports cross-domain hosting (e.g. Vercel frontend + Render backend) via VITE_API_URL
+// Defaults to relative '/api' for unified hosts (Render, Docker, Local, or Vercel Root)
+const envApiUrl = (import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '').trim();
+const API_BASE = envApiUrl ? `${envApiUrl.replace(/\/$/, '')}/api` : '/api';
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('casebridge_token');
@@ -20,6 +24,17 @@ async function request(endpoint, options = {}) {
     if (options.isBlob) {
       if (!res.ok) throw new Error('Failed to download report.');
       return await res.blob();
+    }
+
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      if (res.status === 404) {
+        throw new Error(
+          `API endpoint not found at ${API_BASE}${endpoint} (HTTP 404). ` +
+          `If hosting frontend on Vercel and backend on Render, add VITE_API_URL in Vercel environment variables.`
+        );
+      }
+      throw new Error(`Server returned non-JSON ${res.status} response.`);
     }
 
     const data = await res.json();
