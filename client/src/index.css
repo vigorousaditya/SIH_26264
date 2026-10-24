@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 14px;
+    color: #1E293B;
+  }
+
+  body {
+    @apply bg-gov-bg text-gov-text font-sans antialiased;
+    letter-spacing: -0.01em;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #D97706;
+    outline-offset: 1px;
+  }
+
+  /* Clean tabular numerals for statistics & case IDs */
+  table, .font-mono {
+    font-feature-settings: "tnum" 1, "cv01" 1;
+  }
+}
+
+/* Compact GIGW Table Styles */
+.gov-table th {
+  @apply py-2 px-3 text-xs font-semibold uppercase tracking-wider text-gov-textMuted bg-gov-bg border-b border-gov-border text-left select-none;
+}
+.gov-table td {
+  @apply py-2 px-3 text-xs text-gov-text border-b border-gov-border align-middle;
+}
+.gov-table tbody tr:hover {
+  @apply bg-slate-50/80;
+}
+.gov-table tbody tr:last-child td {
+  border-bottom-width: 0px;
+}
+
+/* Subdued Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #EDF1F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* React Flow sober government styling */
+.react-flow__node {
+  cursor: pointer;
+}
+.react-flow__handle {
+  width: 6px;
+  height: 6px;
+  background: #0B3C5D;
+  border: 1px solid #FFFFFF;
+}
+
+/* Print Friendly Styles */
+@media print {
+  aside, header, nav, .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    background: white !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
